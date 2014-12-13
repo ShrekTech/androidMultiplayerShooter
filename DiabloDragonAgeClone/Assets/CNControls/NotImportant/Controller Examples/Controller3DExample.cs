@@ -24,7 +24,7 @@ public class Controller3DExample : MonoBehaviour
         // MovementJoystick.JoystickMovedEvent += MoveWithEvent;
 
         _characterController = GetComponent<CharacterController>();
-        _mainCameraTransform = Camera.main.GetComponent<Transform>();
+        _mainCameraTransform = Camera.main.transform;
         _transformCache = GetComponent<Transform>();
         _playerTransform = _transformCache.FindChild("Cocoon");
     }
@@ -53,7 +53,8 @@ public class Controller3DExample : MonoBehaviour
 
     private void CommonMovementMethod(Vector3 movement)
     {
-        movement = _mainCameraTransform.TransformDirection(movement);
+        //movement = _mainCameraTransform.TransformDirection(movement);
+		//_mainCameraTransform.position += movement;
         movement.y = 0f;
         movement.Normalize();
 
