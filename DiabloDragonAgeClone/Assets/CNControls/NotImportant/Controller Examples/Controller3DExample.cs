@@ -10,6 +10,7 @@ public class Controller3DExample : MonoBehaviour
     public float movementSpeed = 5f;
 
     public CNAbstractController MovementJoystick;
+	public CNTouchpad touchPad;
 
     private CharacterController _characterController;
     private Transform _mainCameraTransform;
@@ -33,33 +34,40 @@ public class Controller3DExample : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var movement = new Vector3(
+        var joystickMovement = new Vector3(
             MovementJoystick.GetAxis("Horizontal"),
             0f,
             MovementJoystick.GetAxis("Vertical"));
 
-        CommonMovementMethod(movement);
+		var touchPadMovement = new Vector3(
+			touchPad.GetAxis("Horizontal"),
+			0f,
+			touchPad.GetAxis("Vertical"));
+
+		Debug.Log("touchpad vector: " + touchPadMovement);
+
+		CommonMovementMethod(joystickMovement, touchPadMovement);
     }
 
-    private void MoveWithEvent(Vector3 inputMovement)
+//    private void MoveWithEvent(Vector3 inputMovement)
+//    {
+//        var movement = new Vector3(
+//            inputMovement.x,
+//            0f,
+//            inputMovement.y);
+//
+//        CommonMovementMethod(movement);
+//    }
+
+	private void CommonMovementMethod(Vector3 joystickMovement, Vector3 touchPadMovement)
     {
-        var movement = new Vector3(
-            inputMovement.x,
-            0f,
-            inputMovement.y);
+		joystickMovement = _mainCameraTransform.TransformDirection(joystickMovement);
+		joystickMovement.y = 0f;
+		joystickMovement.Normalize();
 
-        CommonMovementMethod(movement);
-    }
-
-    private void CommonMovementMethod(Vector3 movement)
-    {
-        //movement = _mainCameraTransform.TransformDirection(movement);
-		//_mainCameraTransform.position += movement;
-        movement.y = 0f;
-        movement.Normalize();
-
-        FaceDirection(movement);
-        _characterController.Move(movement * movementSpeed * Time.deltaTime);
+		FaceDirection(touchPadMovement);
+		_characterController.Move(joystickMovement * movementSpeed * Time.deltaTime);
+		_mainCameraTransform.position = _characterController.transform.position + 3*Vector3.back + Vector3.up;
     }
 
     public void FaceDirection(Vector3 direction)
