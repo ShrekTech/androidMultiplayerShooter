@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -200,7 +200,7 @@ public abstract class CNAbstractController : MonoBehaviour
 
         ParentCamera = TransformCache.parent.GetComponent<Camera>();
 
-        TransformCache.localPosition = InitializePosition();
+        TransformCache.position = InitializePosition();
     }
 
     /// <summary>

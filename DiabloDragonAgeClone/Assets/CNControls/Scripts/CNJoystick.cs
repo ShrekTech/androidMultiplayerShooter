@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 // Common Joystick control
 // There're lots of these, you know
@@ -87,8 +87,8 @@ public class CNJoystick : CNAbstractController
     {
         base.ResetControlState();
         // Setting the stick and base local positions back to local zero
-        _stickTransform.localPosition = 
-            _baseTransform.localPosition = Vector3.zero;
+        _stickTransform.position = 
+            _baseTransform.position = Vector3.zero;
     }
 
     /// <summary>
