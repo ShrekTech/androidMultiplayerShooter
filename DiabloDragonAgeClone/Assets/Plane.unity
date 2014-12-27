@@ -2127,6 +2127,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2047197098}
   - 114: {fileID: 2047197099}
+  - 114: {fileID: 2047197100}
   m_Layer: 0
   m_Name: Bubble Gun End
   m_TagString: Untagged
@@ -2160,6 +2161,21 @@ MonoBehaviour:
   projectile: {fileID: 5400000, guid: 198729a7bf6b76147a68117cfe23216d, type: 2}
   speed: 30
   reloadInterval: .300000012
+--- !u!114 &2047197100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2047197097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d36952e7747f4959bbf66c006deae7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 5400000, guid: 198729a7bf6b76147a68117cfe23216d, type: 2}
+  speed: 30
+  chargeInterval: 1
+  cooldownInterval: 1
 --- !u!1 &2092357472
 GameObject:
   m_ObjectHideFlags: 0
