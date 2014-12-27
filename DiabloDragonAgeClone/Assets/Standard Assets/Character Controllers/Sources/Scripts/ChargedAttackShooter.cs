@@ -29,10 +29,18 @@ public class ChargedAttackShooter : MonoBehaviour {
 				}
 				return GunState.IDLE;
 			case GunState.CHARGING : 
-				if (chargeIntervalElapsed < chargeInterval) {
+				if (Input.GetButtonUp("Fire2")) {
+					return GunState.FIRING;
+				} else if (chargeIntervalElapsed < chargeInterval) {
 					return GunState.CHARGING;
+				} else {
+					return GunState.FULLYCHARGED;
 				}
-				return GunState.FIRING;
+			case GunState.FULLYCHARGED :
+				if (Input.GetButtonDown("Fire2")) {
+					return GunState.FIRING;
+				}
+				return GunState.FULLYCHARGED;
 			case GunState.FIRING : 
 				return GunState.COOLDOWN;
 			case GunState.COOLDOWN : 
@@ -61,17 +69,25 @@ public class ChargedAttackShooter : MonoBehaviour {
 					}
 					chargeIntervalElapsed += Time.deltaTime;
 					break;
+				case GunState.FULLYCHARGED:
+					break;
 				case GunState.FIRING:
-					for (int i = 0; i < 10; i++ ) {
-						Rigidbody projectileClone = (Rigidbody) Instantiate(projectile, transform.position, transform.rotation);
-						projectileClone.velocity = transform.TransformDirection(new Vector3 (0, 0, speed));
-						Destroy (projectileClone.gameObject, 3);
+					if (previousGunState.Equals(GunState.FULLYCHARGED)) {
+						for (int i = 0; i < 10; i++ ) {
+							Rigidbody projectileClone = (Rigidbody) Instantiate(projectile, transform.position, transform.rotation);
+							projectileClone.velocity = transform.TransformDirection(new Vector3 (0, 0, speed));
+							Destroy (projectileClone.gameObject, 3);
+						}
+					} else {
+						for (int i = 0; i < 3; i++ ) {
+							Rigidbody projectileClone = (Rigidbody) Instantiate(projectile, transform.position, transform.rotation);
+							projectileClone.velocity = transform.TransformDirection(new Vector3 (0, 0, speed));
+							Destroy (projectileClone.gameObject, 3);
+						}
 					}
+					cooldownIntervalElapsed = 0;
 					break;
 				case GunState.COOLDOWN: 
-					if (previousGunState.Equals(GunState.FIRING)) {
-						cooldownIntervalElapsed = 0;
-					}
 					cooldownIntervalElapsed += Time.deltaTime;
 					break;
 				default:
@@ -84,6 +100,7 @@ public class ChargedAttackShooter : MonoBehaviour {
 	private enum GunState {
 		IDLE,
 		CHARGING,
+		FULLYCHARGED,
 		FIRING,
 		COOLDOWN
 	}
