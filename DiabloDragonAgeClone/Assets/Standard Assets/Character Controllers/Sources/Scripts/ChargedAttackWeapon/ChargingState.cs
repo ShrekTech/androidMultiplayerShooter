@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Application
+namespace ChargedAttack
 {
 	class ChargingState : ChargeGunState
 	{
@@ -10,7 +10,6 @@ namespace Application
 
 		public ChargeGunState handleInput ()
 		{
-			Debug.Log (chargeIntervalElapsed);
 			if (chargeIntervalElapsed < chargeInterval) {
 				if (Input.GetButtonUp("Fire2")) {
 					return new FiringState(false);

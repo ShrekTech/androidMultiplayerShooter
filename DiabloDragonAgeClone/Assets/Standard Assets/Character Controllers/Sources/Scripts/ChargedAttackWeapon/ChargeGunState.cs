@@ -1,5 +1,5 @@
 using System;
-namespace Application
+namespace ChargedAttack
 {
 	public interface ChargeGunState
 	{

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Application
+namespace ChargedAttack
 {
 	class FiringState : ChargeGunState
 	{

@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace Application
+namespace ChargedAttack
 {
 	public class IdleState : ChargeGunState
 	{
