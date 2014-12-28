@@ -2,13 +2,13 @@ using System;
 using UnityEngine;
 namespace ChargedAttack
 {
-	public class IdleState : ChargeGunState
+	public class IdleState : IChargeGunState
 	{
 		public IdleState ()
 		{
 		}
 
-		public ChargeGunState handleInput ()
+		public IChargeGunState HandleInput ()
 		{
 			if (Input.GetButton ("Fire2")) {
 				return new ChargingState();
@@ -16,7 +16,7 @@ namespace ChargedAttack
 			return this;
 		}
 
-		public void update (ChargedAttackWeapon weapon)
+		public void Update (ChargedAttackWeapon weapon)
 		{
 
 		}

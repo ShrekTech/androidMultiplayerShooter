@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace ChargedAttack
 {
-	class CooldownState : ChargeGunState
+	class CooldownState : IChargeGunState
 	{
 		float cooldownInterval = 1.0f;
 		float cooldownIntervalElapsed = 0;
 
-		public ChargeGunState handleInput ()
+		public IChargeGunState HandleInput ()
 		{
 			if (cooldownIntervalElapsed < cooldownInterval) {
 				return this;
@@ -19,7 +19,7 @@ namespace ChargedAttack
 			return new IdleState();
 		}
 
-		public void update (ChargedAttackWeapon weapon)
+		public void Update (ChargedAttackWeapon weapon)
 		{
 			cooldownIntervalElapsed += Time.deltaTime;
 		}

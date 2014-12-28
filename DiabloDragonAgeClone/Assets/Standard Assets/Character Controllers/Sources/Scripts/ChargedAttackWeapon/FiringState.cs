@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ChargedAttack
 {
-	class FiringState : ChargeGunState
+	class FiringState : IChargeGunState
 	{
 		bool isFullyCharged;
 
@@ -11,12 +11,12 @@ namespace ChargedAttack
 			this.isFullyCharged = isFullyCharged;
 		}
 
-		public ChargeGunState handleInput ()
+		public IChargeGunState HandleInput ()
 		{
 			return new CooldownState ();
 		}
 
-		public void update (ChargedAttackWeapon weapon)
+		public void Update (ChargedAttackWeapon weapon)
 		{
 			if (isFullyCharged) {
 				for (int i = 0; i < 10; i++ ) {

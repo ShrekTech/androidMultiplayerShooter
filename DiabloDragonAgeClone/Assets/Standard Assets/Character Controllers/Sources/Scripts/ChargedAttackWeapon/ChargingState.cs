@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace ChargedAttack
 {
-	class ChargingState : ChargeGunState
+	class ChargingState : IChargeGunState
 	{
 		float chargeIntervalElapsed = 0;
 		float chargeInterval = 2.0f;
 
-		public ChargeGunState handleInput ()
+		public IChargeGunState HandleInput ()
 		{
 			if (chargeIntervalElapsed < chargeInterval) {
 				if (Input.GetButtonUp("Fire2")) {
@@ -20,7 +20,7 @@ namespace ChargedAttack
 			}
 		}
 
-		public void update (ChargedAttackWeapon weapon)
+		public void Update (ChargedAttackWeapon weapon)
 		{
 			chargeIntervalElapsed += Time.deltaTime;
 		}

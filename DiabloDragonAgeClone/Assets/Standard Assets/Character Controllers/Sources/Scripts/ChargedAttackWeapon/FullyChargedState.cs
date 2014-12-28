@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace ChargedAttack
 {
-	class FullyChargedState : ChargeGunState
+	class FullyChargedState : IChargeGunState
 	{
-		public ChargeGunState handleInput ()
+		public IChargeGunState HandleInput ()
 		{
 			if (Input.GetButtonDown("Fire2")) {
 				return new FiringState(true);
@@ -13,7 +13,7 @@ namespace ChargedAttack
 			return this;
 		}
 
-		public void update (ChargedAttackWeapon weapon)
+		public void Update (ChargedAttackWeapon weapon)
 		{
 		}
 	}

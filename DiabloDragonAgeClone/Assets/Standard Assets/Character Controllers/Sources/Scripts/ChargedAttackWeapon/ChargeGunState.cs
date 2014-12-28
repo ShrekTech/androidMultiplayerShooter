@@ -1,10 +1,10 @@
 using System;
 namespace ChargedAttack
 {
-	public interface ChargeGunState
+	public interface IChargeGunState
 	{
-		ChargeGunState handleInput ();
-		void update(ChargedAttackWeapon weapon);
+		IChargeGunState HandleInput ();
+		void Update(ChargedAttackWeapon weapon);
 
 	}
 	
