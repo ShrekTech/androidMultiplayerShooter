@@ -350,7 +350,7 @@ Transform:
   m_Children:
   - {fileID: 2047197098}
   m_Father: {fileID: 1375614545}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &415849885
 GameObject:
   m_ObjectHideFlags: 0
@@ -1022,6 +1022,8 @@ GameObject:
   - 92: {fileID: 1076218956}
   - 124: {fileID: 1076218955}
   - 81: {fileID: 1076218954}
+  - 114: {fileID: 1076218959}
+  - 114: {fileID: 1076218960}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1089,11 +1091,41 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1076218953}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 3, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
+--- !u!114 &1076218959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076218953}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axes: 0
+  sensitivityX: 15
+  sensitivityY: 15
+  minimumX: -360
+  maximumX: 360
+  minimumY: -60
+  maximumY: 60
+--- !u!114 &1076218960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076218953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac4194e5d4bc41209cc507d4c51dd97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCharacterController: {fileID: 1375614548}
 --- !u!1 &1127691088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,7 +1404,7 @@ Transform:
   m_Children:
   - {fileID: 1781096043}
   m_Father: {fileID: 1375614545}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &1375614544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,10 +1434,10 @@ Transform:
   m_LocalPosition: {x: 1.16360474, y: 2.23445749, z: 11.845459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1352499779}
   - {fileID: 370051198}
+  - {fileID: 1352499779}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &1375614546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,12 +1445,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1789671502}
   m_GameObject: {fileID: 1375614544}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b167d00b3108411a8a963cba5ddde1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 1076218958}
   distance: 2
   height: .800000012
   angularSmoothLag: .100000001
@@ -1936,7 +1968,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
       propertyPath: m_AABB.m_Center.x
@@ -2001,6 +2033,26 @@ Prefab:
     - target: {fileID: 11400000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
       propertyPath: height
       value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1076218958}
+    - target: {fileID: 400014, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
