@@ -1,3 +1,4 @@
+@script RequireComponent(Animation)
 private var motor : CharacterMotor;
 
 // Use this for initialization
@@ -7,10 +8,13 @@ function Awake () {
 
 // Update is called once per frame
 function Update () {
+	var animation : Animation = GetComponent(Animation);
+
 	// Get the input vector from keyboard or analog stick
 	var directionVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 	
 	if (directionVector != Vector3.zero) {
+		animation.Play ("run");
 		// Get the length of the directon vector and then normalize it
 		// Dividing by the length is cheaper than normalizing when we already have the length anyway
 		var directionLength = directionVector.magnitude;
@@ -25,11 +29,20 @@ function Update () {
 		
 		// Multiply the normalized direction vector by the modified length
 		directionVector = directionVector * directionLength;
+	} else {
+		animation.Play ("idle");
 	}
+	
+	
 	
 	// Apply the direction to the CharacterMotor
 	motor.inputMoveDirection = transform.rotation * directionVector;
 	motor.inputJump = Input.GetButton("Jump");
+	
+	if(motor.inputJump) {
+		animation.Play ("jump_pose");
+	}
+	
 }
 
 // Require a character controller to be attached to the same game object
