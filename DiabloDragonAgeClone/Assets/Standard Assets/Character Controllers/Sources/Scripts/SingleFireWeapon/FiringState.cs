@@ -15,8 +15,10 @@ namespace SingleFire
 
 		public void update (SingleFireWeapon weapon)
 		{
+			Transform mainCameraTransform = Camera.main.transform;
+
 			Rigidbody projectileClone = (Rigidbody) MonoBehaviour.Instantiate(weapon.projectile, weapon.transform.position, new Quaternion());
-			projectileClone.velocity = weapon.transform.TransformDirection(new Vector3 (0, 0, weapon.speed));
+			projectileClone.velocity = mainCameraTransform.TransformDirection(new Vector3 (0, 0, weapon.speed));
 			MonoBehaviour.Destroy (projectileClone.gameObject, 3);
 		}
 
