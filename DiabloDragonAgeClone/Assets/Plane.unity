@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5400000, guid: 198729a7bf6b76147a68117cfe23216d, type: 2}
-  speed: 100
+  speed: 150
   reloadInterval: .300000012
 --- !u!114 &2047197100
 MonoBehaviour:
