@@ -34,19 +34,20 @@ namespace ChargedAttack
 			Vector3 velocity = Vector3.Normalize(pointToAimAt - weapon.transform.position)*weapon.speed;
 
 			if (isFullyCharged) {
-				for (int i = 0; i < 10; i++ ) {
-					Rigidbody projectileClone = (Rigidbody) MonoBehaviour.Instantiate(weapon.projectile, weapon.transform.position, weapon.transform.rotation);
-					projectileClone.velocity = velocity;
-					MonoBehaviour.Destroy (projectileClone.gameObject, 3);
-				}
+				FireProjectileFromWeaponWithSizeAndVelocity(weapon, 4.0f, velocity);
 			} else {
-				for (int i = 0; i < 3; i++ ) {
-					Rigidbody projectileClone = (Rigidbody) MonoBehaviour.Instantiate(weapon.projectile, weapon.transform.position, weapon.transform.rotation);
-					projectileClone.velocity = velocity;
-					MonoBehaviour.Destroy (projectileClone.gameObject, 3);
-				}
+				FireProjectileFromWeaponWithSizeAndVelocity(weapon, 1.5f, velocity);
 			}
 		}
+
+		private void FireProjectileFromWeaponWithSizeAndVelocity(ChargedAttackWeapon weapon, float projectileSize, Vector3 velocity) {
+			Rigidbody projectileClone = (Rigidbody) MonoBehaviour.Instantiate(weapon.projectile, weapon.transform.position, weapon.transform.rotation);
+			Vector3 projectileScale = projectileClone.transform.localScale;
+			projectileClone.transform.localScale = projectileSize * projectileScale;
+			projectileClone.velocity = velocity;
+			MonoBehaviour.Destroy (projectileClone.gameObject, 3);
+		}
+
 	}
 
 
