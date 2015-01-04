@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 /// MouseLook rotates the transform based on the mouse delta.
@@ -15,23 +15,39 @@ using System.Collections;
 /// - Add a MouseLook script to the camera.
 ///   -> Set the mouse look to use LookY. (You want the camera to tilt up and down like a head. The character already turns.)
 [AddComponentMenu("Camera-Control/Mouse Look")]
-public class MouseLookCharacter : MonoBehaviour {
-	
+public class MouseLookCamera : MonoBehaviour {
+
 	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 	public RotationAxes axes = RotationAxes.MouseXAndY;
 	public float sensitivityX = 15F;
 	public float sensitivityY = 15F;
-	
+
 	public float minimumX = -360F;
 	public float maximumX = 360F;
-	
+
 	public float minimumY = -60F;
 	public float maximumY = 60F;
-	
+
 	float rotationY = 0F;
-	
+
 	void Update ()
 	{
+
+
+//		Transform mainCameraTransform = Camera.main.transform;
+//		
+//		Vector3 forwardFromCamera = mainCameraTransform.TransformDirection (Vector3.forward);
+//		
+//		RaycastHit hit;
+//
+//		if (Physics.Raycast (mainCameraTransform.TransformPoint(0.5f * Vector3.right), forwardFromCamera, out hit)) {
+//			if(hit.collider.gameObject.name.Contains("Horse")) {
+//				Camera.main.transform.LookAt(hit.point);
+//				return;
+//			}
+//		}
+
+
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;

@@ -32,6 +32,26 @@ public class MouseLook : MonoBehaviour {
 
 	void Update ()
 	{
+
+		Transform mainCameraTransform = Camera.main.transform;
+		
+		Vector3 forwardFromCamera = mainCameraTransform.TransformDirection (Vector3.forward);
+		
+		RaycastHit hit;
+		
+		if (Physics.Raycast (mainCameraTransform.TransformPoint(0.5f * Vector3.right), forwardFromCamera, out hit)) {
+			if(hit.collider.gameObject.name.Contains("Horse")) {
+				Debug.Log ("Look at horse");
+				Vector3 oldAngles = transform.eulerAngles;
+				transform.LookAt(hit.point);
+				Vector3 eulerAngles = transform.eulerAngles;
+				eulerAngles.x = 0;
+				transform.eulerAngles = eulerAngles;
+
+				return;
+			}
+		}
+
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;

@@ -28,7 +28,28 @@ function LateUpdate () {
 	if (!target)
 		return;
 	
-	// Calculate the current rotation angles
+	
+	// Set the position of the camera on the x-z plane to:
+	// distance meters behind the target
+	transform.position = target.position;
+	
+	// Set the height of the camera
+	//transform.position.y = currentHeight;
+		
+	var forwardFromCamera = transform.TransformDirection (Vector3.forward);
+		
+	var hit : RaycastHit;
+	
+	if (Physics.Raycast (transform.TransformPoint(0.5f * Vector3.right), forwardFromCamera, hit)) {
+		if(hit.collider.gameObject.name.Contains("Horse")) {
+			transform.LookAt(hit.collider.bounds.center);
+		}
+	} else {	
+		// Always look at the target
+		transform.LookAt (target);
+	}
+	
+			// Calculate the current rotation angles
 	var wantedRotationAngle = target.eulerAngles.y;
 
 		
@@ -44,16 +65,8 @@ function LateUpdate () {
 	// Convert the angle into a rotation
 	var currentRotation = Quaternion.Euler (currentRotationAngleX, currentRotationAngleY, 0);
 	
-	// Set the position of the camera on the x-z plane to:
-	// distance meters behind the target
-	transform.position = target.position;
 	var offsetBehindCharacter = new Vector3(0, 0, distance);
 	transform.position -= currentRotation * offsetBehindCharacter;
 
-	// Set the height of the camera
-	//transform.position.y = currentHeight;
-	
-	// Always look at the target
-	// maybe look 2 units to his right?
-	transform.LookAt (target);
+
 }
