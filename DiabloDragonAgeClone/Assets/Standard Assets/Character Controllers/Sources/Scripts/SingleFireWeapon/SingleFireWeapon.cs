@@ -11,11 +11,11 @@ namespace SingleFire
 		public float reloadInterval;
 		
 		private SingleFireWeaponState gunState;
-		private Vector3 enemyPosition;
-		private bool isEnemyDetected;
+		private EnemyDetectedListener enemyDetectedListener;
 
 		void Start () {
 			gunState = new IdleState ();
+			enemyDetectedListener = new EnemyDetectedListener ();
 		}
 		
 		void Update () {
@@ -23,27 +23,8 @@ namespace SingleFire
 			gunState.update (this);
 		}
 
-		void OnEnable ()
-		{
-			EnemyDetector.enemyDetected += EnemyDetectedHandler;
-		}
-		
-		void OnDisable ()
-		{
-			EnemyDetector.enemyDetected -= EnemyDetectedHandler;
-		}
-		
-		void EnemyDetectedHandler(bool isEnemyDetected, Vector3 enemyPosition) {
-			this.isEnemyDetected = isEnemyDetected;
-			this.enemyPosition = enemyPosition;
-		}
-
-		public Vector3 GetEnemyPosition() {
-			return this.enemyPosition;
-		}
-
-		public bool EnemyDetected() {
-			return this.isEnemyDetected;
+		public EnemyDetectedListener GetEnemyDetectedListener() {
+			return this.enemyDetectedListener;
 		}
 
 

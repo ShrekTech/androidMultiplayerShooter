@@ -18,11 +18,11 @@ namespace SingleFire
 		{
 			Transform mainCameraTransform = Camera.main.transform;
 
+			EnemyDetectedListener enemyDetectedListener = weapon.GetEnemyDetectedListener ();
 			Vector3 pointToAimAt;
-			Debug.Log("lol?");
-			if (weapon.EnemyDetected()) {
-				pointToAimAt = weapon.GetEnemyPosition();
-				Debug.Log("lol");
+
+			if (enemyDetectedListener.IsEnemyDetected()) {
+				pointToAimAt = enemyDetectedListener.GetEnemyPosition();
 			} else {
 				pointToAimAt = mainCameraTransform.TransformPoint(new Vector3(0,0,100));
 			}

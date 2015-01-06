@@ -2,21 +2,26 @@
 using System.Collections;
 using AutoAim;
 
-public class EnemyDetectedListener : MonoBehaviour {
+public class EnemyDetectedListener {
 
+	private bool isEnemyDetected = false;
+	private Vector3 enemyPosition = new Vector3();
 
-	void OnEnable ()
-	{
+	public EnemyDetectedListener() {
 		EnemyDetector.enemyDetected += EnemyDetectedHandler;
 	}
 
-	void OnDisable ()
-	{
-		EnemyDetector.enemyDetected -= EnemyDetectedHandler;
+	void EnemyDetectedHandler(bool isEnemyDetected, Vector3 enemyPosition) {
+		this.isEnemyDetected = isEnemyDetected;
+		this.enemyPosition = enemyPosition;
 	}
 
-	public void EnemyDetectedHandler(bool isEnemyDetected, Vector3 enemyPosition) {
-		Debug.Log ("Horse at: " + enemyPosition);
+	public bool IsEnemyDetected() {
+		return this.isEnemyDetected;
+	}
+
+	public Vector3 GetEnemyPosition() {
+		return this.enemyPosition;
 	}
 	
 }

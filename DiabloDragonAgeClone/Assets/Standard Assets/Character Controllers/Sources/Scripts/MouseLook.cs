@@ -30,25 +30,21 @@ public class MouseLook : MonoBehaviour {
 
 	float rotationY = 0F;
 
+	private EnemyDetectedListener enemyDetectedListener;
+	
+	void Start () {
+		enemyDetectedListener = new EnemyDetectedListener ();
+
+	}
+
 	void Update ()
 	{
-
-		Transform mainCameraTransform = Camera.main.transform;
-		
-		Vector3 forwardFromCamera = mainCameraTransform.TransformDirection (Vector3.forward);
-		
-		RaycastHit hit;
-		
-		if (Physics.Raycast (mainCameraTransform.TransformPoint(0.5f * Vector3.right), forwardFromCamera, out hit)) {
-			if(hit.collider.gameObject.name.Contains("Horse")) {
-				Vector3 oldAngles = transform.eulerAngles;
-				transform.LookAt(hit.point);
+		if (enemyDetectedListener.IsEnemyDetected()) {
+				transform.LookAt(enemyDetectedListener.GetEnemyPosition());
 				Vector3 eulerAngles = transform.eulerAngles;
 				eulerAngles.x = 0;
 				transform.eulerAngles = eulerAngles;
-
 				return;
-			}
 		}
 
 		if (axes == RotationAxes.MouseXAndY)
@@ -71,12 +67,5 @@ public class MouseLook : MonoBehaviour {
 			
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 		}
-	}
-	
-	void Start ()
-	{
-		// Make the rigid body not change rotation
-		if (GetComponent<Rigidbody>())
-			GetComponent<Rigidbody>().freezeRotation = true;
 	}
 }
