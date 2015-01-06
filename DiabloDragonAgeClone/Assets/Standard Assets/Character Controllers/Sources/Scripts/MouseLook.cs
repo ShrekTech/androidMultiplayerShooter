@@ -41,7 +41,6 @@ public class MouseLook : MonoBehaviour {
 		
 		if (Physics.Raycast (mainCameraTransform.TransformPoint(0.5f * Vector3.right), forwardFromCamera, out hit)) {
 			if(hit.collider.gameObject.name.Contains("Horse")) {
-				Debug.Log ("Look at horse");
 				Vector3 oldAngles = transform.eulerAngles;
 				transform.LookAt(hit.point);
 				Vector3 eulerAngles = transform.eulerAngles;

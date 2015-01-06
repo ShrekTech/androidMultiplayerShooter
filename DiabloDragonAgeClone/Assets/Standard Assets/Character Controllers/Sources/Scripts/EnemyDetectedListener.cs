@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using AutoAim;
 
 public class EnemyDetectedListener : MonoBehaviour {
 
@@ -14,7 +15,7 @@ public class EnemyDetectedListener : MonoBehaviour {
 		EnemyDetector.enemyDetected -= EnemyDetectedHandler;
 	}
 
-	public void EnemyDetectedHandler(Vector3 enemyPosition) {
+	public void EnemyDetectedHandler(bool isEnemyDetected, Vector3 enemyPosition) {
 		Debug.Log ("Horse at: " + enemyPosition);
 	}
 	

@@ -4147,9 +4147,9 @@ GameObject:
   - 124: {fileID: 1076218955}
   - 81: {fileID: 1076218954}
   - 114: {fileID: 1076218959}
-  - 114: {fileID: 1076218961}
   - 114: {fileID: 1076218960}
   - 114: {fileID: 1076218963}
+  - 114: {fileID: 1076218961}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4262,6 +4262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298c82c9dddea449db4e52452a369e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoAimTimeAfterClick: .200000003
 --- !u!114 &1076218963
 MonoBehaviour:
   m_ObjectHideFlags: 0
