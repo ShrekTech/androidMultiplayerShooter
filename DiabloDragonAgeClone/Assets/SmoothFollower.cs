@@ -22,7 +22,10 @@ public class SmoothFollower : MonoBehaviour {
 		transform.position = target.position;
 		
 		if (enemyDetectedListener.IsEnemyDetected()) {
-			transform.LookAt(enemyDetectedListener.GetEnemyPosition());
+			var targetRotation = Quaternion.LookRotation(enemyDetectedListener.GetEnemyPosition() - transform.position);
+			
+			// Smoothly rotate towards the enemy
+			transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5.0f * Time.deltaTime);
 		} else {	
 			transform.LookAt (target);
 		}

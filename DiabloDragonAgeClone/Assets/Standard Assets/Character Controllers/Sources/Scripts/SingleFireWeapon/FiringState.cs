@@ -18,13 +18,13 @@ namespace SingleFire
 		{
 			Transform mainCameraTransform = Camera.main.transform;
 
-			EnemyDetectedListener enemyDetectedListener = weapon.GetEnemyDetectedListener ();
-			Vector3 pointToAimAt;
+			Vector3 forwardFromCamera = mainCameraTransform.TransformDirection (Vector3.forward);
+			RaycastHit hit;
 
-			if (enemyDetectedListener.IsEnemyDetected()) {
-				pointToAimAt = enemyDetectedListener.GetEnemyPosition();
-			} else {
-				pointToAimAt = mainCameraTransform.TransformPoint(new Vector3(0,0,100));
+			Vector3 pointToAimAt = mainCameraTransform.TransformPoint(new Vector3(0,0,1000));
+
+			if (Physics.Raycast (mainCameraTransform.position, forwardFromCamera, out hit)) {
+				pointToAimAt = hit.collider.bounds.center;
 			}
 
 			Vector3 velocity = Vector3.Normalize(pointToAimAt - weapon.transform.position)*weapon.speed;

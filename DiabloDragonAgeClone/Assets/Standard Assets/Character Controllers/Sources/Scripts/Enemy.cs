@@ -2,7 +2,10 @@
 using System.Collections;
 
 public class Enemy : DamageReceiver {
-	
+
+	public float health = 20.0f;
+	public GameObject explosion;
+
 	void Start () {
 	
 	}
@@ -14,7 +17,11 @@ public class Enemy : DamageReceiver {
 
 	public override void TakeDamage (float damageReceived)
 	{
-		Destroy (gameObject);
+		health -= damageReceived;
+		if (health < 0) {
+			MonoBehaviour.Instantiate(explosion, transform.position, transform.rotation);
+			Destroy(gameObject);
+		}
 	}
 
 }

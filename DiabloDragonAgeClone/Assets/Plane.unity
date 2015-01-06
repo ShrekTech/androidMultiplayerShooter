@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd527d5eeb75c4e889d7afa1ce5b096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  explosion: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
 --- !u!136 &596585
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -278,6 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd527d5eeb75c4e889d7afa1ce5b096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  explosion: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
 --- !u!136 &35576318
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3686,6 +3690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd527d5eeb75c4e889d7afa1ce5b096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  explosion: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
 --- !u!1 &896937020
 GameObject:
   m_ObjectHideFlags: 0
@@ -5017,6 +5023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd527d5eeb75c4e889d7afa1ce5b096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  explosion: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
 --- !u!136 &1274663759
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7404,7 +7412,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400090, guid: 05d19f8ee987a4ff3a36c3103d5d9d7c, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05d19f8ee987a4ff3a36c3103d5d9d7c, type: 2}

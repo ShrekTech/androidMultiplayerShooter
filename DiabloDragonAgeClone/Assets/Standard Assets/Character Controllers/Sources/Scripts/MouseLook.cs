@@ -40,10 +40,11 @@ public class MouseLook : MonoBehaviour {
 	void Update ()
 	{
 		if (enemyDetectedListener.IsEnemyDetected()) {
-				transform.LookAt(enemyDetectedListener.GetEnemyPosition());
-				Vector3 eulerAngles = transform.eulerAngles;
-				eulerAngles.x = 0;
-				transform.eulerAngles = eulerAngles;
+				
+				var targetRotation = Quaternion.LookRotation(enemyDetectedListener.GetEnemyPosition() - transform.position);
+				
+				// Smoothly rotate towards the enemy
+				transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5.0f * Time.deltaTime);
 				return;
 		}
 
