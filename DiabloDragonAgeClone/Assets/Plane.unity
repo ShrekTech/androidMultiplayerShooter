@@ -5507,7 +5507,7 @@ MonoBehaviour:
   jumping:
     enabled: 1
     baseHeight: 1
-    extraHeight: 4.0999999
+    extraHeight: 1.39999998
     perpAmount: 0
     steepPerpAmount: .5
   movingPlatform:

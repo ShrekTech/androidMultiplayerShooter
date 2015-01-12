@@ -8,6 +8,7 @@ namespace AutoAim
 
 		public delegate void EnemyDetectedHandler(bool isEnemyDetected, Vector3 enemyPosition);
 		public static event EnemyDetectedHandler enemyDetected;
+
 		public float autoAimTimeAfterClick = 0.2f;
 
 		private FiringState firingState;
