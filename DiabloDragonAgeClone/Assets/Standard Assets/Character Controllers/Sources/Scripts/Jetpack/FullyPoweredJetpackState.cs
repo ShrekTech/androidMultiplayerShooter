@@ -5,7 +5,12 @@ namespace Jetpack
 {
 	class FullyPoweredJetpackState : IJetpackState
 	{
-		public IJetpackState handleInput ()
+
+		public FullyPoweredJetpackState () {
+			Debug.Log ("FullyPowered");
+		}
+
+		public IJetpackState HandleInput ()
 		{
 			if (Input.GetButtonDown ("Fire1")) {
 				//raycast

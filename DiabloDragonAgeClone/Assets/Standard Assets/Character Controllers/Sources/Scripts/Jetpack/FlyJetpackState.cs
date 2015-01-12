@@ -11,9 +11,10 @@ namespace Jetpack
 
 		public FlyJetpackState (Vector3 locationToFlyTo) {
 			this.locationToFlyTo = locationToFlyTo;
+			Debug.Log ("Fly: " + this.locationToFlyTo);
 		}
 
-		public IJetpackState handleInput ()
+		public IJetpackState HandleInput ()
 		{
 			// detect landing and return
 

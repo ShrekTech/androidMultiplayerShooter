@@ -4,7 +4,7 @@ namespace Jetpack
 {
 	public interface IJetpackState
 	{
-		IJetpackState handleInput();
+		IJetpackState HandleInput();
 		void Update(MonoBehaviour jetpack);
 	}
 }

@@ -6,13 +6,17 @@ namespace Jetpack
 	{
 		private float powerupTimeBeforeJetpackCharged = 2.5f;
 		private float powerupTimeElapsed = 0;
-		
-		public IJetpackState handleInput ()
+
+		public PowerUpJetpackState () {
+			Debug.Log ("Power up");
+		}
+
+		public IJetpackState HandleInput ()
 		{
 			if (powerupTimeElapsed >= powerupTimeBeforeJetpackCharged) {
 				return new FullyPoweredJetpackState();
 			}
-			if(!Input.GetButtonDown("Jump")) {
+			if(!Input.GetButton("Jump")) {
 				return new RechargeJetpackState();
 			}
 			return this;

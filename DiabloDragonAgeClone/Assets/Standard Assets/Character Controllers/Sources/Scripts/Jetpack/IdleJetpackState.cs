@@ -7,9 +7,10 @@ namespace Jetpack
 
 		public IdleJetpackState ()
 		{
+			Debug.Log ("Idle");
 		}
 
-		public IJetpackState handleInput ()
+		public IJetpackState HandleInput ()
 		{
 			if (Input.GetButton("Jump")) {
 				return new CharacterJumpState();
@@ -19,7 +20,7 @@ namespace Jetpack
 
 		public void Update (UnityEngine.MonoBehaviour jetpack)
 		{
-			throw new NotImplementedException ();
+
 		}
 
 	}
