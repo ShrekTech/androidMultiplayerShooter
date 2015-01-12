@@ -7,6 +7,11 @@ namespace Jetpack
 
 		public IdleJetpackState ()
 		{
+			initialiseState ();
+		}
+
+		public void initialiseState ()
+		{
 			Debug.Log ("Idle");
 		}
 

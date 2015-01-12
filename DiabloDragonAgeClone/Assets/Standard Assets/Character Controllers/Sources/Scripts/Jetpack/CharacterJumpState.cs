@@ -5,11 +5,18 @@ namespace Jetpack
 {
 	class CharacterJumpState : IJetpackState
 	{
-		private float jumpTimeBeforeJetpackStarts = 0.5f;
-		private float jumpTimeElapsed = 0;
+		private float jumpTimeBeforeJetpackStarts;
+		private float jumpTimeElapsed;
 
 		public CharacterJumpState () {
+			initialiseState ();
+		}
+
+		public void initialiseState ()
+		{
 			Debug.Log ("Character Jump");
+			this.jumpTimeBeforeJetpackStarts = 0.5f;
+			this.jumpTimeElapsed = 0;
 		}
 
 		public IJetpackState HandleInput ()

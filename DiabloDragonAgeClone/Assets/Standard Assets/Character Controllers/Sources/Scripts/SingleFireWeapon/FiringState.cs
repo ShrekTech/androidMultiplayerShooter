@@ -24,7 +24,9 @@ namespace SingleFire
 			Vector3 pointToAimAt = mainCameraTransform.TransformPoint(new Vector3(0,0,1000));
 
 			if (Physics.Raycast (mainCameraTransform.position, forwardFromCamera, out hit)) {
-				pointToAimAt = hit.collider.bounds.center;
+				if (hit.collider.name.Contains("Horse")) {
+					pointToAimAt = hit.collider.bounds.center;
+				}
 			}
 
 			Vector3 velocity = Vector3.Normalize(pointToAimAt - weapon.transform.position)*weapon.speed;

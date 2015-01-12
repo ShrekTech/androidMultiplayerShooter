@@ -6,11 +6,17 @@ namespace Jetpack
 	class RechargeJetpackState : IJetpackState
 	{
 
+		private float rechargeCountdown;
+
 		public RechargeJetpackState () {
-			Debug.Log ("Recharge");
+			initialiseState ();
 		}
 
-		private float rechargeCountdown = 1.0f;
+		public void initialiseState ()
+		{
+			Debug.Log ("Recharge");
+			rechargeCountdown = 1.0f;
+		}
 		
 		public IJetpackState HandleInput ()
 		{

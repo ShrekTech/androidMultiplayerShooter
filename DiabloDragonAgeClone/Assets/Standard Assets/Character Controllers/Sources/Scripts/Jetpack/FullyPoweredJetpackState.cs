@@ -7,6 +7,11 @@ namespace Jetpack
 	{
 
 		public FullyPoweredJetpackState () {
+			initialiseState ();
+		}
+
+		public void initialiseState ()
+		{
 			Debug.Log ("FullyPowered");
 		}
 
@@ -15,7 +20,9 @@ namespace Jetpack
 			if (Input.GetButtonDown ("Fire1")) {
 				//raycast
 				Vector3 positionToFlyTo = new Vector3();
-				return new FlyJetpackState(positionToFlyTo);
+				FlyJetpackState flyJetPack = new FlyJetpackState();
+				flyJetPack.SetLocationToFlyTo(positionToFlyTo);
+				return flyJetPack;
 			}
 			return this;
 		}

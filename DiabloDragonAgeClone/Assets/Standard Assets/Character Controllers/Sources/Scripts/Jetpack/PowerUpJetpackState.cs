@@ -4,11 +4,18 @@ namespace Jetpack
 {
 	class PowerUpJetpackState : IJetpackState
 	{
-		private float powerupTimeBeforeJetpackCharged = 2.5f;
-		private float powerupTimeElapsed = 0;
+		private float powerupTimeBeforeJetpackCharged;
+		private float powerupTimeElapsed;
 
 		public PowerUpJetpackState () {
+			initialiseState ();
+		}
+
+		public void initialiseState ()
+		{
 			Debug.Log ("Power up");
+			this.powerupTimeBeforeJetpackCharged = 2.5f;
+			this.powerupTimeElapsed = 0;
 		}
 
 		public IJetpackState HandleInput ()

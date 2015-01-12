@@ -9,9 +9,20 @@ namespace Jetpack
 		// silly placeholder
 		private float countdownToLanding = 1.0f;
 
-		public FlyJetpackState (Vector3 locationToFlyTo) {
-			this.locationToFlyTo = locationToFlyTo;
+		public FlyJetpackState () {
+			initialiseState ();
+		}
+
+
+		public void initialiseState ()
+		{
+			this.locationToFlyTo = new Vector3 ();
+			this.countdownToLanding = 1.0f;
 			Debug.Log ("Fly: " + this.locationToFlyTo);
+		}
+
+		public void SetLocationToFlyTo (Vector3 locationToFlyTo) {
+			this.locationToFlyTo = locationToFlyTo;
 		}
 
 		public IJetpackState HandleInput ()
