@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd527d5eeb75c4e889d7afa1ce5b096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  explosion: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
 --- !u!136 &596585
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -278,6 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd527d5eeb75c4e889d7afa1ce5b096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  explosion: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
 --- !u!136 &35576318
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3686,6 +3690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd527d5eeb75c4e889d7afa1ce5b096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  explosion: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
 --- !u!1 &896937020
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,8 +4152,9 @@ GameObject:
   - 92: {fileID: 1076218956}
   - 124: {fileID: 1076218955}
   - 81: {fileID: 1076218954}
-  - 114: {fileID: 1076218962}
   - 114: {fileID: 1076218959}
+  - 114: {fileID: 1076218963}
+  - 114: {fileID: 1076218961}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4238,7 +4245,7 @@ MonoBehaviour:
   maximumX: 360
   minimumY: -60
   maximumY: 60
---- !u!114 &1076218962
+--- !u!114 &1076218961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -4246,13 +4253,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076218953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 885b1972ad11a921d000d37b8d76c639, type: 3}
+  m_Script: {fileID: 11500000, guid: 298c82c9dddea449db4e52452a369e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAimTimeAfterClick: .200000003
+--- !u!114 &1076218963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076218953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5925a4a05e36e494498661c53936bcc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 351115406}
   distance: 2
-  height: 1
-  heightDamping: 2
   rotationDamping: 3
 --- !u!1 &1095785769
 GameObject:
@@ -5006,6 +5023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd527d5eeb75c4e889d7afa1ce5b096b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
+  explosion: {fileID: 100000, guid: 2a6951ec14b27ed4da27d13818dbebd2, type: 2}
 --- !u!136 &1274663759
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7393,7 +7412,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400090, guid: 05d19f8ee987a4ff3a36c3103d5d9d7c, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05d19f8ee987a4ff3a36c3103d5d9d7c, type: 2}

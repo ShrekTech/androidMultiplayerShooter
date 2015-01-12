@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using AutoAim;
 namespace SingleFire
 {
 	public class FiringState : SingleFireWeaponState
@@ -18,15 +19,12 @@ namespace SingleFire
 			Transform mainCameraTransform = Camera.main.transform;
 
 			Vector3 forwardFromCamera = mainCameraTransform.TransformDirection (Vector3.forward);
-
 			RaycastHit hit;
 
-			Vector3 pointToAimAt;
+			Vector3 pointToAimAt = mainCameraTransform.TransformPoint(new Vector3(0,0,1000));
 
-			if (Physics.Raycast (weapon.transform.position, forwardFromCamera, out hit)) {
-				pointToAimAt = hit.point;
-			} else {
-				pointToAimAt = mainCameraTransform.TransformPoint(new Vector3(0,0,100));
+			if (Physics.Raycast (mainCameraTransform.position, forwardFromCamera, out hit)) {
+				pointToAimAt = hit.collider.bounds.center;
 			}
 
 			Vector3 velocity = Vector3.Normalize(pointToAimAt - weapon.transform.position)*weapon.speed;

@@ -1,23 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SingleFire;
+using AutoAim;
+namespace SingleFire
+{
+	public class SingleFireWeapon : MonoBehaviour {
 
-public class SingleFireWeapon : MonoBehaviour {
+		public Rigidbody projectile;
+		public float speed;
+		public float reloadInterval;
+		
+		private SingleFireWeaponState gunState;
+		private EnemyDetectedListener enemyDetectedListener;
 
-	public Rigidbody projectile;
-	public float speed;
-	public float reloadInterval;
+		void Start () {
+			gunState = new IdleState ();
+			enemyDetectedListener = new EnemyDetectedListener ();
+		}
+		
+		void Update () {
+			gunState = gunState.handleInput ();
+			gunState.update (this);
+		}
 
-	private SingleFireWeaponState gunState;
+		public EnemyDetectedListener GetEnemyDetectedListener() {
+			return this.enemyDetectedListener;
+		}
 
-	void Start () {
-		gunState = new IdleState ();
+
 	}
-	
-	void Update () {
-		gunState = gunState.handleInput ();
-		gunState.update (this);
-	}
-
-
 }

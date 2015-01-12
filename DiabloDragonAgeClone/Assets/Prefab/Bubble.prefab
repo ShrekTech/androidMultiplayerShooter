@@ -86,7 +86,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAdministered: 5
-  explosion: {fileID: 100000, guid: 5a5dc44bfe769d94ba1bcab91c5c3107, type: 2}
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
