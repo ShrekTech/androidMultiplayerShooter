@@ -7,18 +7,18 @@ namespace Jetpack
 
 		public IdleJetpackState ()
 		{
-			initialiseState ();
+			InitialiseState ();
 		}
 
-		public void initialiseState ()
+		public void InitialiseState ()
 		{
 			Debug.Log ("Idle");
 		}
 
-		public IJetpackState HandleInput ()
+		public IJetpackState HandleInput (JetpackStateFactory jetpackStateFactory)
 		{
 			if (Input.GetButton("Jump")) {
-				return new CharacterJumpState();
+				return jetpackStateFactory.getState(JetpackState.JUMPING);
 			}
 			return this;
 		}

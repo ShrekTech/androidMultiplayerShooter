@@ -5430,6 +5430,7 @@ GameObject:
   - 114: {fileID: 1375614547}
   - 114: {fileID: 1375614546}
   - 114: {fileID: 1375614550}
+  - 114: {fileID: 1375614551}
   m_Layer: 0
   m_Name: 3rd Person Controller
   m_TagString: Player
@@ -5574,6 +5575,17 @@ MonoBehaviour:
   maximumX: 360
   minimumY: -60
   maximumY: 60
+--- !u!114 &1375614551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1375614544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4302b272c464e14a5adbda0d4fadc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1383208729
 GameObject:
   m_ObjectHideFlags: 0

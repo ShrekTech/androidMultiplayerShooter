@@ -9,23 +9,23 @@ namespace Jetpack
 		private float jumpTimeElapsed;
 
 		public CharacterJumpState () {
-			initialiseState ();
+			InitialiseState ();
 		}
 
-		public void initialiseState ()
+		public void InitialiseState ()
 		{
 			Debug.Log ("Character Jump");
 			this.jumpTimeBeforeJetpackStarts = 0.5f;
 			this.jumpTimeElapsed = 0;
 		}
 
-		public IJetpackState HandleInput ()
+		public IJetpackState HandleInput (JetpackStateFactory jetpackStateFactory)
 		{
 			if (jumpTimeElapsed >= jumpTimeBeforeJetpackStarts) {
-				return new PowerUpJetpackState();
+				return jetpackStateFactory.getState(JetpackState.POWERUP);
 			}
 			if(!Input.GetButton("Jump")) {
-				return new IdleJetpackState();
+				return jetpackStateFactory.getState(JetpackState.IDLE);
 			}
 			return this;
 		}

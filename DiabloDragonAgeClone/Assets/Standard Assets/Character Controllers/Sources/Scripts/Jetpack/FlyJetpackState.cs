@@ -10,11 +10,11 @@ namespace Jetpack
 		private float countdownToLanding = 1.0f;
 
 		public FlyJetpackState () {
-			initialiseState ();
+			InitialiseState ();
 		}
 
 
-		public void initialiseState ()
+		public void InitialiseState ()
 		{
 			this.locationToFlyTo = new Vector3 ();
 			this.countdownToLanding = 1.0f;
@@ -25,12 +25,12 @@ namespace Jetpack
 			this.locationToFlyTo = locationToFlyTo;
 		}
 
-		public IJetpackState HandleInput ()
+		public IJetpackState HandleInput (JetpackStateFactory jetpackStateFactory)
 		{
 			// detect landing and return
 
 			if (this.countdownToLanding <= 0) {
-				return new RechargeJetpackState();
+				return jetpackStateFactory.getState(JetpackState.RECHARGE);
 			}
 			return this;
 		}

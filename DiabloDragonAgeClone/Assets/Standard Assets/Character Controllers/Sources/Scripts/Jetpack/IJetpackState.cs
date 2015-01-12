@@ -4,8 +4,8 @@ namespace Jetpack
 {
 	public interface IJetpackState
 	{
-		void initialiseState();
-		IJetpackState HandleInput();
+		void InitialiseState();
+		IJetpackState HandleInput(JetpackStateFactory jetpackStateFactory);
 		void Update(MonoBehaviour jetpack);
 	}
 }

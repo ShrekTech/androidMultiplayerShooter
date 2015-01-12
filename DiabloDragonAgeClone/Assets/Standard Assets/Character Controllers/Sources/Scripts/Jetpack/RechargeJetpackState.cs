@@ -9,21 +9,21 @@ namespace Jetpack
 		private float rechargeCountdown;
 
 		public RechargeJetpackState () {
-			initialiseState ();
+			InitialiseState ();
 		}
 
-		public void initialiseState ()
+		public void InitialiseState ()
 		{
 			Debug.Log ("Recharge");
 			rechargeCountdown = 1.0f;
 		}
 		
-		public IJetpackState HandleInput ()
+		public IJetpackState HandleInput (JetpackStateFactory jetpackStateFactory)
 		{
 			// detect landing and return
 			
 			if (this.rechargeCountdown <= 0) {
-				return new IdleJetpackState();
+				return jetpackStateFactory.getState(JetpackState.IDLE);
 			}
 			return this;
 		}
