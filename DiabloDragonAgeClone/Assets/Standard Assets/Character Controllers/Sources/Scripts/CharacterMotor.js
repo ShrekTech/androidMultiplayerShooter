@@ -195,8 +195,9 @@ private function UpdateFunction () {
 	if (MoveWithPlatform()) {
 		var newGlobalPoint : Vector3 = movingPlatform.activePlatform.TransformPoint(movingPlatform.activeLocalPoint);
 		moveDistance = (newGlobalPoint - movingPlatform.activeGlobalPoint);
-		if (moveDistance != Vector3.zero)
+		if (moveDistance != Vector3.zero) {
 			controller.Move(moveDistance);
+		}
 		
 		// Support moving platform rotation as well:
         var newGlobalRotation : Quaternion = movingPlatform.activePlatform.rotation * movingPlatform.activeLocalRotation;
@@ -340,6 +341,11 @@ private function ApplyInputVelocityChange (velocity : Vector3) {
 	if (!canControl)
 		inputMoveDirection = Vector3.zero;
 	
+	Debug.Log ("inputMoveDirection: " + inputMoveDirection);
+	
+	
+	//inputMoveDirection = Vector3.forward;
+	
 	// Find desired velocity
 	var desiredVelocity : Vector3;
 	if (grounded && TooSteep()) {
@@ -347,6 +353,7 @@ private function ApplyInputVelocityChange (velocity : Vector3) {
 		desiredVelocity = Vector3(groundNormal.x, 0, groundNormal.z).normalized;
 		// Find the input movement direction projected onto the sliding direction
 		var projectedMoveDir = Vector3.Project(inputMoveDirection, desiredVelocity);
+		Debug.Log ("projectedMoveDir: " + projectedMoveDir);
 		// Add the sliding direction, the spped control, and the sideways control vectors
 		desiredVelocity = desiredVelocity + projectedMoveDir * sliding.speedControl + (inputMoveDirection - projectedMoveDir) * sliding.sidewaysControl;
 		// Multiply with the sliding speed
